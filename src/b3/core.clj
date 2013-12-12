@@ -55,9 +55,9 @@
            n n]
       (if (<= n 0)
         facts
-        (let [date (if (= n 1)     ;;  Ensures precision of final date.
-                     end
-                     begin)
+        (let [date (if (= n 1)     ;; Ensures precision of final date.  Just
+                     end           ;; might have been premature optimization.
+                     begin)        ;; TODO: Check once we have visuals.
               new-facts (set (map (partial make-instant-fact date)
                                   (filter (one-in-n-chance (count dist)) dist)))
               new-facts (no-sprinkler-in-rain new-facts)]
